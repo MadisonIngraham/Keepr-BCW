@@ -23,6 +23,14 @@ namespace Keepr.Repositories
 
     internal Keep Create(Keep KeepData)
     {
+      string sql = @"INSERT INTO keeps (name, description, img, userId) VALUES (@Name, @Description, @Img, @UserId);";
+      int id = _db.ExecuteScalar<int>(sql, KeepData);
+      KeepData.Id = id;
+      return KeepData;
+    }
+
+    internal object GetById(int id)
+    {
       throw new NotImplementedException();
     }
   }

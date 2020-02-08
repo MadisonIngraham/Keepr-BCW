@@ -1,4 +1,4 @@
--- USE keepr13;
+USE burgershack2020;
 
 -- CREATE TABLE vaults (
 --     id int NOT NULL AUTO_INCREMENT,
@@ -7,7 +7,7 @@
 --     userId VARCHAR(255),
 --     INDEX userId (userId),  
 --     PRIMARY KEY (id)
--- );
+-- -- );
 
 -- CREATE TABLE keeps (
 --     id int NOT NULL AUTO_INCREMENT,
