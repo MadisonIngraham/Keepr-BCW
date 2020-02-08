@@ -31,5 +31,21 @@ namespace Keepr.Services
       if (exists == null) { throw new Exception("Invalid id."); }
       return exists;
     }
+
+    internal Keep Edit(Keep update)
+    {
+      var exists = _repo.GetById(update.Id);
+      if (exists == null) { throw new Exception("Invalid id."); }
+      _repo.Edit(update);
+      return update;
+    }
+
+    internal object Delete(int id)
+    {
+      var exists = _repo.GetById(id);
+      if (exists == null) { throw new Exception("Invalid id."); }
+      _repo.Delete(id);
+      return "Successfully deleted";
+    }
   }
 }
