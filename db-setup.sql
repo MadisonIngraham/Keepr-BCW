@@ -30,29 +30,41 @@ USE burgershack2020;
 --     PRIMARY KEY (id)
 -- );
 
--- CREATE TABLE vaultkeeps (
---     id int NOT NULL AUTO_INCREMENT,
+-- CREATE TABLE vaultkeeps
+-- (
+--   id int NOT NULL
+--   AUTO_INCREMENT,
 --     vaultId int NOT NULL,
 --     keepId int NOT NULL,
---     userId VARCHAR(255) NOT NULL,
+--     userId VARCHAR
+--   (255) NOT NULL,
 
---     PRIMARY KEY (id),
---     INDEX (vaultId, keepId),
---     INDEX (userId),
+--     PRIMARY KEY
+--   (id),
+--     INDEX
+--   (vaultId, keepId),
+--     INDEX
+--   (userId),
 
---     FOREIGN KEY (vaultId)
---         REFERENCES vaults(id)
---         ON DELETE CASCADE,
+--     FOREIGN KEY
+--   (vaultId)
+--         REFERENCES vaults
+--   (id)
+--         ON
+--   DELETE CASCADE,
 
 --     FOREIGN KEY (keepId)
---         REFERENCES keeps(id)
---         ON DELETE CASCADE
+--   REFERENCES keeps
+--   (id)
+--         ON
+--   DELETE CASCADE
 -- )
 
 
--- -- USE THIS LINE FOR GET KEEPS BY VAULTID
--- SELECT k.* FROM vaultkeeps vk
--- INNER JOIN keeps k ON k.id = vk.keepId 
+-- -- -- USE THIS LINE FOR GET KEEPS BY VAULTID
+-- SELECT k.*
+-- FROM vaultkeeps vk
+--   INNER JOIN keeps k ON k.id = vk.keepId
 -- WHERE (vaultId = @vaultId AND vk.userId = @userId) 
 
 

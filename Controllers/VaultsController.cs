@@ -48,7 +48,6 @@ namespace Keepr.Controllers
     }
 
     [HttpPost]
-    [Authorize]
     public ActionResult<Vault> Post([FromBody] Vault newVault)
     {
       try
