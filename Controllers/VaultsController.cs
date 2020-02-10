@@ -65,11 +65,11 @@ namespace Keepr.Controllers
 
 
     [HttpDelete("{id}")]
-    [Authorize]
     public ActionResult<String> Delete(int id)
     {
       try
       {
+
         return Ok(_vs.Delete(id));
       }
       catch (Exception e)
