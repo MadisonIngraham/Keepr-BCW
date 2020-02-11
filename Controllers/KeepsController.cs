@@ -48,19 +48,6 @@ namespace Keepr.Controllers
       }
     }
 
-    [HttpGet("{id}")]
-    public ActionResult<Keep> GetPublic(int id)
-    {
-      try
-      {
-        return Ok(_ks.GetPublicById(id));
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e.Message);
-      }
-    }
-
     [HttpPost]
     public ActionResult<Keep> Post([FromBody] Keep newKeep)
     {

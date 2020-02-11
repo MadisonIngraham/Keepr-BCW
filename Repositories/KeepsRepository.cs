@@ -21,12 +21,6 @@ namespace Keepr.Repositories
       return _db.Query<Keep>(sql);
     }
 
-    internal Keep GetPublicById(int id)
-    {
-      string sql = "SELECT * FROM keeps WHERE isPrivate = 0 AND id = @id";
-      return _db.QueryFirstOrDefault<Keep>(sql, new { id });
-    }
-
     internal Keep Create(Keep KeepData)
     {
       string sql = @"INSERT INTO keeps (name, description, img, userId) VALUES (@Name, @Description, @Img, @UserId);

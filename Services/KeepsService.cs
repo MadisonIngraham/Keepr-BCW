@@ -31,13 +31,6 @@ namespace Keepr.Services
     }
 
 
-    internal Keep GetPublicById(int id)
-    {
-      var exists = _repo.GetPublicById(id);
-      if (exists.IsPrivate == true) { throw new Exception("Can't access private content."); }
-      return exists;
-    }
-
     internal Keep Edit(Keep update)
     {
       var exists = _repo.GetById(update.Id);
