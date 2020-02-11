@@ -17,8 +17,14 @@ namespace Keepr.Repositories
 
     internal IEnumerable<Keep> Get()
     {
-      string sql = "SELECT * FROM Keeps WHERE isPrivate = 0;";
+      string sql = "SELECT * FROM keeps WHERE isPrivate = 0;";
       return _db.Query<Keep>(sql);
+    }
+
+    internal Keep GetPublicById(int id)
+    {
+      string sql = "SELECT * FROM keeps WHERE isPrivate = 0 AND id = @id";
+      return _db.QueryFirstOrDefault<Keep>(sql, new { id });
     }
 
     internal Keep Create(Keep KeepData)
@@ -29,6 +35,7 @@ namespace Keepr.Repositories
       KeepData.Id = id;
       return KeepData;
     }
+
 
     internal Keep GetById(int id)
     {

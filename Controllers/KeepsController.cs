@@ -34,12 +34,26 @@ namespace Keepr.Controllers
       };
     }
 
+    [Authorize]
     [HttpGet("{id}")]
     public ActionResult<Keep> Get(int id)
     {
       try
       {
         return Ok(_ks.GetById(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<Keep> GetPublic(int id)
+    {
+      try
+      {
+        return Ok(_ks.GetPublicById(id));
       }
       catch (Exception e)
       {
@@ -76,6 +90,7 @@ namespace Keepr.Controllers
       }
     }
 
+    [Authorize]
     [HttpDelete("{id}")]
     public ActionResult<String> Delete(int id)
     {

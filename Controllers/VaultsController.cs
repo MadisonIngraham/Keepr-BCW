@@ -34,6 +34,7 @@ namespace Keepr.Controllers
       };
     }
 
+    [Authorize]
     [HttpGet("{id}")]
     public ActionResult<Vault> Get(int id)
     {
@@ -62,7 +63,7 @@ namespace Keepr.Controllers
       }
     }
 
-
+    [Authorize]
     [HttpDelete("{id}")]
     public ActionResult<String> Delete(int id)
     {

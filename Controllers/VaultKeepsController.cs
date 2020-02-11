@@ -53,7 +53,7 @@ namespace Keepr.Controllers
       }
     }
 
-
+    [Authorize]
     [HttpDelete("{vaultId}/keeps/{keepId}")]
     public ActionResult<String> Delete(int keepId)
     {

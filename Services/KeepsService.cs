@@ -21,14 +21,20 @@ namespace Keepr.Services
     internal Keep Create(Keep newKeep)
     {
       return _repo.Create(newKeep);
-      // newKeep.Id = _repo.Create(newKeep);
-      // return newKeep;
     }
 
     internal Keep GetById(int id)
     {
       var exists = _repo.GetById(id);
       if (exists == null) { throw new Exception("Invalid id."); }
+      return exists;
+    }
+
+
+    internal Keep GetPublicById(int id)
+    {
+      var exists = _repo.GetPublicById(id);
+      if (exists.IsPrivate == true) { throw new Exception("Can't access private content."); }
       return exists;
     }
 
@@ -52,5 +58,6 @@ namespace Keepr.Services
     {
       return _repo.GetKeepsByVaultId(vaultId, userId);
     }
+
   }
 }
