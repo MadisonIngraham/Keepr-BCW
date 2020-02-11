@@ -54,12 +54,12 @@ namespace Keepr.Controllers
     }
 
 
-    [HttpDelete("{id}")]
-    public ActionResult<String> Delete(int id)
+    [HttpDelete("{vaultId}/keeps/{keepId}")]
+    public ActionResult<String> Delete(int keepId)
     {
       try
       {
-        return Ok(_vks.Delete(id));
+        return Ok(_ks.Delete(keepId));
       }
       catch (Exception e)
       {
