@@ -47,5 +47,10 @@ namespace Keepr.Services
       _repo.Delete(id);
       return "Successfully deleted";
     }
+
+    internal IEnumerable<Keep> GetKeepsByVaultId(int vaultId, string userId)
+    {
+      return _repo.GetKeepsByVaultId(vaultId, userId);
+    }
   }
 }

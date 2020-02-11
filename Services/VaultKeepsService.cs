@@ -16,16 +16,16 @@ namespace Keepr.Services
 
     internal void Create(VaultKeep newData)
     {
-      // VaultKeep exists = _repo.Find(newData);
-      // if (exists != null) { throw new Exception("This is already in your collection"); }
+      VaultKeep exists = _repo.Find(newData);
+      if (exists != null) { throw new Exception("This is already in your collection"); }
       _repo.Create(newData);
     }
 
-    internal string Delete(VaultKeep vk)
+    internal string Delete(int id)
     {
-      VaultKeep exists = _repo.Find(vk);
+      var exists = _repo.GetById(id);
       if (exists == null) { throw new Exception("Invalid id combination"); }
-      _repo.Delete(exists);
+      _repo.Delete(id);
       return "Successfully Deleted";
     }
   }

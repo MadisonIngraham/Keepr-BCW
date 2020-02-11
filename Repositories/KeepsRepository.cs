@@ -52,5 +52,15 @@ namespace Keepr.Repositories
       string sql = "DELETE FROM keeps WHERE id = @id";
       _db.Execute(sql, new { id });
     }
+
+    internal IEnumerable<Keep> GetKeepsByVaultId(int vaultId, string userId)
+    {
+      string sql = @"
+            SELECT k.*
+            FROM vaultkeeps vk
+            INNER JOIN keeps k ON k.id = vk.keepId
+            WHERE (vk.vaultId = @vaultId AND vk.userId = @userId);";
+      return _db.Query<Keep>(sql, new { vaultId, userId });
+    }
   }
 }
