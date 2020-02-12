@@ -1,7 +1,7 @@
 <template>
   <div class="home container-fluid">
     <div class="row">
-      <div class="col">{{publicKeeps}}</div>
+      <div class="col">{{keeps}}</div>
     </div>
   </div>
 </template>
@@ -13,8 +13,8 @@ export default {
     user() {
       return this.$store.state.user;
     },
-    publicKeeps() {
-      return this.$store.state.publicKeeps;
+    keeps() {
+      return this.$store.state.keeps;
     }
   },
   methods: {

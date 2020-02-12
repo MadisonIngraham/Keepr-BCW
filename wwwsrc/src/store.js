@@ -18,17 +18,17 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     activeUser: {},
-    publicKeeps: []
+    keeps: []
   },
   mutations: {
     setUser(state, user) {
       state.activeUser = user;
     },
     setKeeps(state, data) {
-      state.publicKeeps = data;
+      state.keeps = data;
     },
     addKeep(state, data) {
-      state.publicKeeps.unshift(data);
+      state.keeps.unshift(data);
     }
   },
   actions: {
