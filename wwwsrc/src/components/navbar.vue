@@ -22,12 +22,12 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'dashboard' }"
         >
-          <router-link class="nav-link" :to="{ name: 'dashboard' }">My-Dashboard</router-link>
+          <router-link class="nav-link" :to="{ name: 'dashboard' }">My Dashboard</router-link>
         </li>
       </ul>
       <span class="navbar-text">
         <button class="btn" id="login-btn" @click="login" v-if="!$auth.isAuthenticated">Login</button>
-        <button class="btn btn-danger" @click="logout" v-else>logout</button>
+        <button class="btn" id="logout-btn" @click="logout" v-else>Logout</button>
       </span>
     </div>
   </nav>
@@ -46,6 +46,7 @@ export default {
     async login() {
       await this.$auth.loginWithPopup();
       this.$store.dispatch("setBearer", this.$auth.bearer);
+      this.$store.dispatch("setUser", this.$auth.user);
       console.log("this.$auth.user: ");
       console.log(this.$auth.user);
     },
@@ -61,6 +62,10 @@ export default {
 <style scoped>
 #login-btn {
   background-color: #eb6864;
+  color: white;
+}
+#logout-btn {
+  background-color: #369;
   color: white;
 }
 </style>

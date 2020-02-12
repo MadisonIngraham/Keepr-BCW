@@ -1,7 +1,7 @@
 <template>
   <div class="home container-fluid">
     <div class="row">
-      <div class="col-4">Insert cards here</div>
+      <div class="col">{{publicKeeps}}</div>
     </div>
   </div>
 </template>
@@ -12,6 +12,9 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    publicKeeps() {
+      return this.$store.state.publicKeeps;
     }
   },
   methods: {

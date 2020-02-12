@@ -5,19 +5,34 @@ import router from "./router";
 
 Vue.use(Vuex);
 
-let baseUrl = location.host.includes("localhost") ? "https://localhost:5001/" : "/";
+let baseUrl = location.host.includes("localhost")
+  ? "https://localhost:5001/"
+  : "/";
 
 let api = Axios.create({
   baseURL: baseUrl + "api/",
-  timeout: 3000,
+  timeout: 5000,
   withCredentials: true
 });
 
 export default new Vuex.Store({
   state: {
+    activeUser: {},
     publicKeeps: []
   },
   mutations: {
+    resetState(state) {
+      (state.activeUser = {}), (state.publicKeeps = []);
+    },
+    setUser(state, user) {
+      state.activeUser = user;
+    },
+    setKeeps(state, data) {
+      state.publicKeeps = data;
+    },
+    addKeep(state, data) {
+      state.publicKeeps.unshift(data);
+    }
   },
   actions: {
     setBearer({}, bearer) {
@@ -25,6 +40,25 @@ export default new Vuex.Store({
     },
     resetBearer() {
       api.defaults.headers.authorization = "";
+    },
+    setUser({ commit, dispatch }, user) {
+      commit("setUser", user);
+    },
+    async getAllKeeps({ commit, dispatch }) {
+      try {
+        let res = await api.get("keeps");
+        commit("setKeeps", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async createKeep({ commit, dispatch }, data) {
+      try {
+        let res = await api.post("keeps", data);
+        commit("addKeep", res.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 });
