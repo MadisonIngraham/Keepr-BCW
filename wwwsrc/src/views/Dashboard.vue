@@ -50,6 +50,7 @@ export default {
       this.newKeep.name = "";
       this.newKeep.description = "";
       this.newKeep.img = "";
+      this.newKeep.isPrivate = false;
     }
   }
 };

@@ -74,3 +74,5 @@ USE burgershack2020;
 -- DROP TABLE IF EXISTS vaults;
 -- DROP TABLE IF EXISTS keeps;
 -- DROP TABLE IF EXISTS users;
+
+-- DELETE FROM keeps; 
