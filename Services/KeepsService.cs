@@ -27,7 +27,26 @@ namespace Keepr.Services
     {
       var exists = _repo.GetById(id);
       if (exists == null) { throw new Exception("Invalid id."); }
-      return exists;
+      if (exists.IsPrivate == false)
+      {
+        return exists;
+      }
+      throw new Exception("Can't access private content.");
+    }
+
+    internal Keep GetByIdWithUser(int id, string userId)
+    {
+      var exists = _repo.GetById(id);
+      if (exists == null) { throw new Exception("Invalid id."); }
+      if (exists.IsPrivate == false)
+      {
+        return exists;
+      }
+      else if (exists.IsPrivate == true && exists.UserId == userId)
+      {
+        return exists;
+      }
+      throw new Exception("Can't access private content.");
     }
 
 
@@ -51,6 +70,5 @@ namespace Keepr.Services
     {
       return _repo.GetKeepsByVaultId(vaultId, userId);
     }
-
   }
 }
