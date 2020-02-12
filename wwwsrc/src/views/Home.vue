@@ -1,6 +1,8 @@
 <template>
-  <div class="home">
-    <h1>Welcome Home</h1>
+  <div class="home container-fluid">
+    <div class="row">
+      <div class="col-4">Insert cards here</div>
+    </div>
   </div>
 </template>
 

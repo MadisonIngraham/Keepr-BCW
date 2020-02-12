@@ -26,7 +26,7 @@
         </li>
       </ul>
       <span class="navbar-text">
-        <button class="btn btn-success" @click="login" v-if="!$auth.isAuthenticated">Login</button>
+        <button class="btn" id="login-btn" @click="login" v-if="!$auth.isAuthenticated">Login</button>
         <button class="btn btn-danger" @click="logout" v-else>logout</button>
       </span>
     </div>
@@ -58,4 +58,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+#login-btn {
+  background-color: #eb6864;
+  color: white;
+}
+</style>
