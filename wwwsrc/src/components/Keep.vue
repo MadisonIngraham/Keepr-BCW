@@ -1,12 +1,34 @@
 <template>
 <div class="keep">
-  <div class="card border-primary mb-3" style="max-width: 20rem;">
-    <div class="card-header text-center">
-      <img v-bind:src="keepData.img" />
+  <div id="div-outline">
+    <div class="row text-center">
+      <div class="col">
+        <img v-bind:src="keepData.img" />
+      </div>
     </div>
     <body class="card-body">
-      <h4>{{ keepData.name }}</h4>
-      <p>{{keepData.description}}</p>
+      <div class="row flex-column">
+        <div class="col">
+          <h4>{{ keepData.name }}</h4>
+        </div>
+        <div class="col">
+          <p>{{keepData.description}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <button type="button" class="button">View</button>
+          <p>{{keepData.views}}</p>
+        </div>
+        <div class="col text-center">
+          <button type="button" class="button">Keep</button>
+          <p>{{keepData.keeps}}</p>
+        </div>
+        <div class="col text-center">
+          <button type="button" class="button">Share</button>
+          <p>{{keepData.shares}}</p>
+        </div>
+      </div>
     </body>
   </div>
 </div>
@@ -20,8 +42,8 @@ export default {
 </script>
 
 <style scoped>
-.border-primary {
-  border-color: #eb6864 !important;
+#div-outline {
+  border: 1px solid #eb6864;
 }
 .card-header {
   background-color: #eb6864;
@@ -31,5 +53,12 @@ export default {
 }
 img {
   height: 20vh;
+}
+.button {
+  background-color: #eb6864;
+  color: white;
+  border-color: #eb6864;
+  border-radius: 10%;
+  margin-bottom: 5px;
 }
 </style>
