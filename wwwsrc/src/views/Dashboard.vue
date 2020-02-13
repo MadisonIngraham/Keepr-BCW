@@ -2,7 +2,11 @@
   <div class="dashboard container-fluid">
     <div class="row" id="top-row">
       <div class="col">
-        <keep :keepData="keep" v-for="keep in keeps" :key="keep.id" />
+        <div class="row">
+          <div class="col d-flex keep-col">
+            <keep :keepData="keep" v-for="keep in keeps" :key="keep.id" />
+          </div>
+        </div>
       </div>
       <div class="col-3">
         <div id="form-div">
@@ -17,7 +21,19 @@
             />
             <input type="text" placeholder="Image URL" id="img" v-model="newKeep.img" required />
             <button class="btn" id="create-btn" type="submit">Go</button>
-            <div class="bar"></div>
+          </form>
+        </div>
+        <div id="vault-form">
+          <h4>Create Vault</h4>
+          <form @submit.prevent="createVault" class="d-flex flex-column">
+            <input type="text" placeholder="Title" id="name" v-model="newVault.name" required />
+            <input
+              type="text"
+              placeholder="Description"
+              id="description"
+              v-model="newVault.description"
+            />
+            <button class="btn" id="create-btn" type="submit">Go</button>
           </form>
         </div>
       </div>
@@ -46,6 +62,10 @@ export default {
         name: "",
         description: "",
         img: ""
+      },
+      newVault: {
+        name: "",
+        description: ""
       }
     };
   },
@@ -56,7 +76,12 @@ export default {
       this.newKeep.name = "";
       this.newKeep.description = "";
       this.newKeep.img = "";
-      this.newKeep.isPrivate = false;
+    },
+    createVault() {
+      let vault = { ...this.newVault };
+      this.$store.dispatch("createVault", vault);
+      this.newVault.name = "";
+      this.newVault.description = "";
     }
   }
 };
@@ -72,5 +97,9 @@ export default {
 }
 #top-row {
   height: 100%;
+  flex-wrap: nowrap;
+}
+.keep-col {
+  flex-wrap: wrap;
 }
 </style>

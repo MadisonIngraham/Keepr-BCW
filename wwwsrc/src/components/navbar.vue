@@ -24,6 +24,13 @@
         >
           <router-link class="nav-link" :to="{ name: 'dashboard' }">My Dashboard</router-link>
         </li>
+        <li
+          class="nav-item"
+          v-if="$auth.isAuthenticated"
+          :class="{ active: $route.name == 'vaults' }"
+        >
+          <router-link class="nav-link" :to="{ name: 'vaults' }">My Vaults</router-link>
+        </li>
       </ul>
       <span class="navbar-text">
         <button class="btn" id="login-btn" @click="login" v-if="!$auth.isAuthenticated">Login</button>

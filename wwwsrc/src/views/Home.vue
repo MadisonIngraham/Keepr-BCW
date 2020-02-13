@@ -1,7 +1,7 @@
 <template>
   <div class="home container-fluid">
     <div class="row">
-      <div class="col d-flex">
+      <div class="col d-flex keep-col">
         <keep :keepData="keep" v-for="keep in keeps" :key="keep.id" />
       </div>
     </div>
@@ -33,3 +33,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.keep-col {
+  flex-wrap: wrap;
+}
+</style> 

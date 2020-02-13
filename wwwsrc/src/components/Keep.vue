@@ -29,6 +29,20 @@
           <p>{{keepData.shares}}</p>
         </div>
       </div>
+      <div class="row justify-content-end">
+        <div class="col-3">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          ></a>
+          <div class="dropdown-menu" style>
+            <a class="dropdown-item" href="#" @click="deleteKeep(keepData)">Delete</a>
+          </div>
+        </div>
+      </div>
     </body>
   </div>
 </div>
@@ -37,7 +51,16 @@
 <script>
 export default {
   name: "keep",
-  props: ["keepData"]
+  props: ["keepData"],
+  methods: {
+    deleteKeep(keepData) {
+      let keepId = keepData.id;
+      if (this.$auth.user.sub != keepData.userId) {
+        throw new Error("You can't delete what's not yours!");
+      }
+      this.$store.dispatch("deleteKeep", keepId);
+    }
+  }
 };
 </script>
 
@@ -60,5 +83,8 @@ img {
   border-color: #eb6864;
   border-radius: 10%;
   margin-bottom: 5px;
+}
+.card-body {
+  padding-bottom: 0rem;
 }
 </style>

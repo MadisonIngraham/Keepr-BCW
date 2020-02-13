@@ -14,6 +14,7 @@ namespace Keepr.Repositories
       _db = db;
     }
 
+
     internal IEnumerable<Vault> Get()
     {
       string sql = "SELECT * FROM vaults";
