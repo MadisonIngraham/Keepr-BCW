@@ -13,6 +13,7 @@ namespace Keepr.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
+
   public class VaultsController : ControllerBase
   {
     private readonly VaultsService _vs;
@@ -21,12 +22,15 @@ namespace Keepr.Controllers
       _vs = vs;
     }
 
+    [Authorize]
     [HttpGet]
     public ActionResult<IEnumerable<Vault>> Get()
     {
       try
       {
-        return Ok(_vs.Get());
+        //FIXME get the userId and pass to get
+        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        return Ok(_vs.Get(userId));
       }
       catch (Exception e)
       {

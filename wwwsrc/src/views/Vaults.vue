@@ -15,9 +15,7 @@ export default {
   components: {
     Vault
   },
-  mounted() {
-    this.$store.dispatch("getUserVaults");
-  },
+  mounted() {},
   computed: {
     vaults() {
       return this.$store.state.vaults;

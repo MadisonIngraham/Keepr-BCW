@@ -12,7 +12,9 @@ export default {
   name: "App",
   async beforeCreate() {
     await onAuth();
+    await this.$auth.getUserData();
     this.$store.dispatch("setBearer", this.$auth.bearer);
+    this.$store.dispatch("getUserVaults");
   },
   components: {
     Navbar
